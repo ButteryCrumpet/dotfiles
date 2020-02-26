@@ -2,8 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 ZSH_DISABLE_COMPFIX=true
 # Path to your oh-my-zsh installation.
-export ZSH="/home/simonleigh/.oh-my-zsh"
-
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -68,11 +68,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git copyfile sudo zsh-syntax-highlighting)
+plugins=(git copyfile sudo zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# Aliases
+[[ -f "$ZSH_CONFIG/alias.zsh" ]] \
+    && source "$ZSH_CONFIG/alias.zsh"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -101,4 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # PATH
 export PATH=$PATH:/home/simonleigh/.lib/flutter/bin
 export PATH=$PATH:/usr/lib/dart/bin
-export PATH=$PATH:$HOME/.local/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
