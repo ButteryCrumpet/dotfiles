@@ -29,6 +29,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'mhartington/oceanic-next'
 Plug 'chriskempson/base16-vim'
+Plug 'dikiaap/minimalist'
 " Initialize plugin system
 call plug#end()
 
@@ -39,7 +40,7 @@ set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
 set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
 set termguicolors
 
-let g:airline_theme='oceanicnext'
+let g:airline_theme='minimalist'
 
 set splitbelow
 set noshowmode
@@ -50,7 +51,9 @@ set background=dark
 syntax enable
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-colorscheme base16-default-dark
+colorscheme minimalist
+set guifont=Hack
+
 
 "===========
 " Nerdtree

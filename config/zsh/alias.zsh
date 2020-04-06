@@ -15,3 +15,17 @@ alias l='ls -FAh'
 alias la='ls -lAFh'
 alias lt='ls -lFAht'
 alias lr='ls -RFAh'
+
+# copy to clipboard
+alias ccpy='xclip -selection c'
+alias cpst='xclip -out -selection c'
+
+# File helpers
+# echo file line
+eln() {
+  sed -n "$1{p;q}" $2
+}
+
+dotenvar() {
+  grep $1 ${2:-".env"} | awk -F '=' '{ print $2 }'
+}
