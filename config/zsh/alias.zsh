@@ -20,6 +20,9 @@ alias lr='ls -RFAh'
 alias ccpy='xclip -selection c'
 alias cpst='xclip -out -selection c'
 
+# fuzzy delete
+alias fzrm='rm $(fzf)'
+
 # File helpers
 # echo file line
 eln() {

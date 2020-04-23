@@ -14,7 +14,8 @@ Plug 'scrooloose/nerdcommenter'
 "
 "erlang ext.
 Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
-
+"reason ext.
+Plug 'reasonml-editor/vim-reason-plus'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
@@ -30,6 +31,8 @@ Plug 'morhetz/gruvbox'
 Plug 'mhartington/oceanic-next'
 Plug 'chriskempson/base16-vim'
 Plug 'dikiaap/minimalist'
+
+Plug 'tpope/vim-surround'
 " Initialize plugin system
 call plug#end()
 
