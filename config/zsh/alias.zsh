@@ -20,7 +20,10 @@ alias lr='ls -RFAh'
 alias ccpy='xclip -selection c'
 alias cpst='xclip -out -selection c'
 
-# fuzzy delete
+# fuzzy
+## open
+alias fzopen='nvim $(fzf)'
+## delete
 alias fzrm='rm $(fzf)'
 
 # File helpers

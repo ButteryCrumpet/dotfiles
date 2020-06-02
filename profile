@@ -36,3 +36,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# Login scripts
+if [ -f "$HOME/scripts/startup" ]; then
+  for SCRIPT in "$HOME/scripts/startup"; do
+    if [ -f $SCRIPT -a -x $SCRIPT ]
+    then $SCRIPT
+    fi
+  done
+fi

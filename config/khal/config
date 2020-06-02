@@ -10,3 +10,11 @@ dateformat = %Y-%m-%d
 longdateformat = %Y-%m-%d
 datetimeformat = %Y-%m-%d %H:%M
 longdatetimeformat = %Y-%m-%d %H:%M
+
+[default]
+default_calendar = private
+highlight_event_days = true
+timedelta = 14 days
+
+[highlight_days]
+color = light green

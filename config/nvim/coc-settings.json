@@ -11,5 +11,13 @@
   ],
   "erlang_ls.port": 19527,
   "erlang_ls.erlang_ls_path": "erlang_ls",
-  "erlang_ls.trace.server": "off"
+  "erlang_ls.trace.server": "off",
+  "languageserver": {
+    "purescript": {
+      "command": "purescript-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["purescript", "purs"],
+      "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
+    }
+  }
 }

@@ -14,9 +14,12 @@ Plug 'scrooloose/nerdcommenter'
 "
 "erlang ext.
 Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'vim-erlang/vim-erlang-runtime'
 "reason ext.
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'christoomey/vim-tmux-navigator'
+"purescript
+Plug 'raichoo/purescript-vim'
 
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 
