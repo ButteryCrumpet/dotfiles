@@ -33,5 +33,5 @@ eln() {
 }
 
 dotenvar() {
-  grep $1 ${2:-".env"} | awk -F '=' '{ print $2 }'
+  grep $1 ${2:-".env"} | awk -F '=' '{ gsub(/"/, "", $2); print $2 }'
 }

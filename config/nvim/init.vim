@@ -20,8 +20,11 @@ Plug 'reasonml-editor/vim-reason-plus'
 Plug 'christoomey/vim-tmux-navigator'
 "purescript
 Plug 'raichoo/purescript-vim'
+"TS Syntax
+Plug 'HerringtonDarkholme/yats.vim' 
+"styled-components
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
-Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'

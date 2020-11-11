@@ -18,6 +18,12 @@
       "args": ["--stdio"],
       "filetypes": ["purescript", "purs"],
       "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
+    },
+    "phplang": {
+      "command": "intelephense",
+      "args": ["--stdio"],
+      "filetypes": ["php"],
+      "initializationOptions": { "storagePath": "tmp/intelephense" }
     }
   }
 }

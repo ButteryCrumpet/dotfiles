@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # PATH
 export PATH=$PATH:/home/simonleigh/.lib/flutter/bin
 export PATH=$PATH:/usr/lib/dart/bin
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
