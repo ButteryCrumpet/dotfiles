@@ -1,8 +1,10 @@
 [calendars]
 
 [[private]]
-path = /home/simon/.local/share/khal/calendars/private
-type = calendar
+path = ~/.calendars/private
+
+[[work]]
+path = ~/.calendars/work
 
 [locale]
 timeformat = %H:%M
