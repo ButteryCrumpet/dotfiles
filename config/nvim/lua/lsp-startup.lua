@@ -1,9 +1,19 @@
 local nvim_lsp = require('lspconfig')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
 
 -- SERVER SETUP
-local servers = { "erlangls", "ocamlls", "rust_analyzer" }
+local servers = { "erlangls", "ocamlls", "rust_analyzer", "intelephense" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
+    capablities = capablities,
     flags = {
       debounce_text_changes = 150,
     }
@@ -11,6 +21,7 @@ for _, lsp in ipairs(servers) do
 end
 
 nvim_lsp.tsserver.setup {
+    capablities = capablities,
     flags = {
       debounce_text_changes = 150,
     },
