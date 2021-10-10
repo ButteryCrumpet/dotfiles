@@ -1,5 +1,9 @@
 local nvim_lsp = require('lspconfig')
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+local saga = require'lspsaga'
+saga.init_lsp_saga()
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
@@ -31,7 +35,7 @@ nvim_lsp.tsserver.setup {
 }
 
 -- FORMAT ON SAVE
-local format_async = function(err, _, result, _, bufnr)
+local format_async = function(err, result, _, _, bufnr)
     if err ~= nil or result == nil then return end
     if not vim.api.nvim_buf_get_option(bufnr, "modified") then
         local view = vim.fn.winsaveview()

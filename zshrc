@@ -103,9 +103,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 # PATH
-export PATH=$PATH:/home/simonleigh/.lib/flutter/bin
-export PATH=$PATH:/usr/lib/dart/bin
-export PATH=$PATH:$HOME/.config/composer/vendor/bin
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/user/local/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="/home/simon/.lib/flutter/bin:$PATH"
+export PATH="/usr/lib/dart/bin:$PATH"
+export PATH=$"$HOME/.config/composer/vendor/bin:$PATH"
+export PATH="/home/simon/.ebcli-virtual-env/executables:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

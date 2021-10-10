@@ -2,8 +2,12 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'tami5/lspsaga.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip'
+
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -20,6 +24,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'raichoo/purescript-vim'
 "TS Syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'romgrk/nvim-treesitter-context'
 "styled-components
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
@@ -32,7 +37,11 @@ Plug 'mhartington/oceanic-next'
 Plug 'chriskempson/base16-vim'
 Plug 'dikiaap/minimalist'
 
+"prisma ext. Find Treesitter one in future
+Plug 'pantharshit00/vim-prisma'
+
 Plug 'tpope/vim-surround'
+Plug 'liuchengxu/graphviz.vim'
 " Initialize plugin system
 call plug#end()
 
@@ -173,6 +182,10 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+
+" nvim-cmp
+set completeopt=menu,menuone,noselect
+
 "
 " LSP
 "
@@ -180,22 +193,30 @@ nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-nnoremap <silent> <C-[> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> <C-]> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> <space>rn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> <space>ca <cmd>lua vim.lsp.buf.code_action()<CR>
+"nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> K :Lspsaga hover_doc<CR>
+nnoremap <silent> gp :Lspsaga preview_definition<CR>
+"nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gs :Lspsaga signature_help<CR>
+"nnoremap <silent> g? <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
+"nnoremap <silent> <C-[> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+"nnoremap <silent> <C-]> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> <C-[> :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> <C-]> :Lspsaga diagnostic_jump_prev<CR>
+"nnoremap <silent> <space>rn <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> gr :Lspsaga rename<CR>
+"nnoremap <silent> <space>ca <cmd>lua vim.lsp.buf.code_action()<CR>
 
-autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
+nnoremap <silent>ca :Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
 luafile ~/.config/nvim/lua/lsp-startup.lua
 luafile ~/.config/nvim/lua/complete.lua
 
-set completeopt=menuone,noselect
 "
 " Treesitter
 "

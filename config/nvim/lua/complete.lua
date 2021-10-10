@@ -1,92 +1,39 @@
-require'compe'.setup {
-    enabled = true,
-    autocomplete = true,
-    debug = false,
-    min_length = 1,
-    preselect = 'enable',
-    throttle_time = 80,
-    source_timeout = 200,
-    incomplete_delay = 400,
-    max_abbr_width = 100,
-    max_kind_width = 100,
-    max_menu_width = 100,
-    documentation = true,
+-- Setup nvim-cmp
+local cmp = require'cmp'
 
-    source = {
-        path = true,
-        buffer = true,
-        calc = true,
-        vsnip = true,
-        nvim_lsp = true,
-        nvim_lua = true,
-        spell = false,
-        tags = true,
-        snippets_nvim = true,
-        treesitter = false
+cmp.setup({
+  snippet = {
+      expand = function(args)
+        -- For `vsnip` user.
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
+
+        -- For `luasnip` user.
+        -- require('luasnip').lsp_expand(args.body)
+
+        -- For `ultisnips` user.
+        -- vim.fn["UltiSnips#Anon"](args.body)
+      end,
+    },
+    mapping = {
+      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+    },
+    sources = {
+      { name = 'nvim_lsp' },
+
+      -- For vsnip user.
+      { name = 'vsnip' },
+
+      -- For luasnip user.
+      -- { name = 'luasnip' },
+
+      -- For ultisnips user.
+      -- { name = 'ultisnips' },
+
+      { name = 'buffer' },
     }
-}
-
-local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-_G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-p>"
-    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-        return t "<Plug>(vsnip-jump-prev)"
-    else
-        return t "<S-Tab>"
-    end
-end
-
-vim.cmd('inoremap <silent><expr> <C-Space> compe#complete()')
-vim.cmd("inoremap <silent><expr> <CR>      compe#confirm('<CR>')")
-
--- VSNIP SUPPORT 
-local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        return true
-    else
-        return false
-    end
-end
-
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-n>"
-    elseif vim.fn.call("vsnip#available", {1}) == 1 then
-        return t "<Plug>(vsnip-expand-or-jump)"
-    elseif check_back_space() then
-        return t "<Tab>"
-    else
-        return vim.fn['compe#complete']()
-    end
-end
-_G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-p>"
-    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-        return t "<Plug>(vsnip-jump-prev)"
-    else
-        return t "<S-Tab>"
-    end
-end
-
-
--- vim.cmd("inoremap <silent><expr> <C-Space> compe#complete()")
--- vim.cmd("inoremap <silent><expr> <CR>      compe#confirm('<CR>')")
--- vim.cmd("inoremap <silent><expr> <C-e>     compe#close('<C-e>')")
-vim.cmd("inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })")
-vim.cmd("inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })")
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+})

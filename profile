@@ -26,9 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export GOROOT=/usr/local/go
-export GOPATH=/home/simonleigh/Data/Projects/go
-export PATH=$GOROOT/bin:${GOPATH//://bin:}/bin:$PATH
+export PATH=/user/local/go/bin:$PATH
+export PATH="$HOME/.go/bin:$PATH"
 
 # Node Version Manager (nvm)
 export NVM_DIR="$HOME/.nvm"
