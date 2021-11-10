@@ -32,6 +32,10 @@ eln() {
   sed -n "$1{p;q}" $2
 }
 
+elnb() {
+  awk "{ if(NR > ${2}) exit; else if (NR >= ${1}) print;}" $3
+}
+
 dotenvar() {
   grep $1 ${2:-".env"} | awk -F '=' '{ gsub(/"/, "", $2); print $2 }'
 }
