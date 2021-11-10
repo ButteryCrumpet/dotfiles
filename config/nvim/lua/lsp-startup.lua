@@ -67,6 +67,9 @@ local on_attach = function(client, bufnr)
 local filetypes = {
     typescript = "eslint",
     typescriptreact = "eslint",
+    javascript = "eslint",
+    javascriptreact = "eslint",
+    scss = "eslint",
 }
 
 local linters = {
@@ -90,12 +93,16 @@ local linters = {
 }
 
 local formatters = {
-    prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
+    prettier = {command = "npx", args = {"prettier", "--stdin-filepath", "%filepath"}}
 }
 
 local formatFiletypes = {
     typescript = "prettier",
-    typescriptreact = "prettier"
+    typescriptreact = "prettier",
+    javascript = "prettier",
+    javascriptreact = "prettier",
+    scss = "prettier",
+    html = "prettier",
 }
 
 nvim_lsp.diagnosticls.setup {

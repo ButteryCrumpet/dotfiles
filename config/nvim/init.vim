@@ -205,7 +205,7 @@ nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
 nnoremap <silent> <C-[> :Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> <C-]> :Lspsaga diagnostic_jump_prev<CR>
 "nnoremap <silent> <space>rn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> gr :Lspsaga rename<CR>
+nnoremap <silent> <space>rn :Lspsaga rename<CR>
 "nnoremap <silent> <space>ca <cmd>lua vim.lsp.buf.code_action()<CR>
 
 nnoremap <silent>ca :Lspsaga code_action<CR>
