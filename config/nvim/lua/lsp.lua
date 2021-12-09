@@ -1,7 +1,9 @@
 local nvim_lsp = require('lspconfig')
 
 local saga = require'lspsaga'
-saga.init_lsp_saga()
+saga.init_lsp_saga {
+  code_action_prompt = { enable = false, }
+}
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true

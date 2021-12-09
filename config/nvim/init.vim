@@ -1,12 +1,15 @@
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
+Plug 'mfussenegger/nvim-dap'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'tami5/lspsaga.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -214,8 +217,8 @@ vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
 nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
-luafile ~/.config/nvim/lua/lsp-startup.lua
-luafile ~/.config/nvim/lua/complete.lua
+luafile ~/.config/nvim/lua/lsp.lua
+luafile ~/.config/nvim/lua/comp.lua
 
 "
 " Treesitter

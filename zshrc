@@ -74,6 +74,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+export EDITOR="nvim"
+
 # Aliases
 [[ -f "$ZSH_CONFIG/alias.zsh" ]] \
     && source "$ZSH_CONFIG/alias.zsh"
