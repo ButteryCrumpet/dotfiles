@@ -209,7 +209,6 @@ local duplicates = {
 require("cmp").setup({
   confirm_opts = confirm_opts,
   completion = {
-    ---@usage The minimum length of a word to complete on.
     keyword_length = 1,
   },
   experimental = {
