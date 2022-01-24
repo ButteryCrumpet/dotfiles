@@ -26,6 +26,9 @@ alias fzopen='nvim $(fzf)'
 ## delete
 alias fzrm='rm $(fzf)'
 
+## python -> python3
+alias python='python3'
+
 # File helpers
 # echo file line
 eln() {

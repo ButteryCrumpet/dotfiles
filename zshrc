@@ -106,7 +106,7 @@ export EDITOR="nvim"
 #
 # PATH
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/user/local/go/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/home/simon/.lib/flutter/bin:$PATH"
 export PATH="/usr/lib/dart/bin:$PATH"

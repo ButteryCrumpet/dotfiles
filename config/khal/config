@@ -16,7 +16,8 @@ longdatetimeformat = %Y-%m-%d %H:%M
 [default]
 default_calendar = private
 highlight_event_days = true
-timedelta = 14 days
+timedelta = 7 days
+show_all_days = false
 
 [highlight_days]
 color = light green

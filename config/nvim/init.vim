@@ -16,6 +16,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " Navigation
 Plug 'folke/which-key.nvim'
@@ -39,7 +40,7 @@ Plug 'liuchengxu/graphviz.vim'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'romgrk/nvim-treesitter-context'
+"Plug 'romgrk/nvim-treesitter-context'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -103,8 +104,8 @@ vnoremap <silent> > >gv
 nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
 "nnoremap <silent> <C-[> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 "nnoremap <silent> <C-]> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> <C-[> :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> <C-]> :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent> <C-]> :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> <C-[> :Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent>ca :Lspsaga code_action<CR>
 vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
