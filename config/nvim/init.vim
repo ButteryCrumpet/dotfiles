@@ -9,7 +9,6 @@ Plug 'Pocco81/DAPInstall.nvim'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'tami5/lspsaga.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -61,17 +60,6 @@ Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 
-" GUI
-set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
-set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
-set background=dark
-syntax enable
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme base16-default-dark
-set guifont=Hack
-
-
 " Nerdtree
 inoremap jk <ESC>
 nmap <C-n> :NERDTreeToggle<CR>
@@ -100,16 +88,8 @@ let g:airline#extensions#hunks#enabled=0
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
-" LSP
-nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
-"nnoremap <silent> <C-[> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-"nnoremap <silent> <C-]> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> <C-]> :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> <C-[> :Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+nnoremap <silent> <C-[> <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-]> <cmd>lua vim.diagnostic.goto_next()<CR>
 
 lua require('impatient')
 luafile ~/.config/nvim/lua/settings.lua
@@ -121,3 +101,13 @@ luafile ~/.config/nvim/lua/comment.lua
 luafile ~/.config/nvim/lua/telescope-conf.lua
 luafile ~/.config/nvim/lua/keybindings.lua
 luafile ~/.config/nvim/lua/gitsigns-conf.lua
+
+" GUI
+set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
+set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
+set background=dark
+syntax enable
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+set guifont=Hack
+colorscheme base16-default-dark

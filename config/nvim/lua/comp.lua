@@ -232,9 +232,6 @@ require("cmp").setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-	},
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "path" },

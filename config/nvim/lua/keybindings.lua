@@ -34,6 +34,7 @@ wk.register({
 			"Git Diff",
 		},
 	},
+	d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line diagnostic" },
 }, { prefix = "<leader>", nowait = true })
 
 wk.register({
@@ -42,13 +43,13 @@ wk.register({
 		D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
 		r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
 		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to implementation" },
-		p = { ":Lspsaga preview_definition<CR>", "Peek definition" },
-		s = { ":Lspsaga signature_help<CR>", "Peek signature" },
+		p = { "<cmd>lua vim.lsp.buf.preview_location()<CR>", "Peek definition" },
+		s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Peek signature" },
 		f = { "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", "Format" },
-		h = { ":Lspsaga hover_doc<CR>", "Hover" },
+		h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
 	},
-	K = { ":Lspsaga hover_doc<CR>", "Hover" },
+	K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
 	["<leader>"] = {
-		rn = { ":Lspsaga rename", "Rename" },
+		rn = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 	},
 }, { nowait = true })
