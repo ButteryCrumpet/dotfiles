@@ -6,6 +6,7 @@ wk.register({
 		name = "file", -- optional group name
 		f = { "<cmd>Telescope find_files<cr>", "Files" }, -- create a binding with label
 		r = { "<cmd>Telescope oldfiles<cr>", "Recent" }, -- additional options for creating the keymap
+		g = { "<cmd>Telescope live_grep<cr>", "Recent" }, -- additional options for creating the keymap
 		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
 		B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 	},
@@ -41,8 +42,8 @@ wk.register({
 	g = {
 		d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
 		D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
-		r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
-		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to implementation" },
+		r = { "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", "Go to references" },
+		i = { "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", "Go to implementation" },
 		p = { "<cmd>lua vim.lsp.buf.preview_location()<CR>", "Peek definition" },
 		s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Peek signature" },
 		f = { "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", "Format" },

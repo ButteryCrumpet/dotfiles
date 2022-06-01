@@ -39,7 +39,7 @@ Plug 'liuchengxu/graphviz.vim'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"Plug 'romgrk/nvim-treesitter-context'
+Plug 'romgrk/nvim-treesitter-context'
 
 " Airline
 Plug 'vim-airline/vim-airline'

@@ -42,3 +42,7 @@ elnb() {
 dotenvar() {
   grep $1 ${2:-".env"} | awk -F '=' '{ gsub(/"/, "", $2); print $2 }'
 }
+
+sleepto() {
+  sleep $(echo "$(date -d "$1" +%s) - $(date +%s)" | bc)
+}

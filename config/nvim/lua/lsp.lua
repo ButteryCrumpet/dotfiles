@@ -31,15 +31,10 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	},
 }
 
-local on_attach_sync = function(client)
-	if client.resolved_capabilities.document_formatting then
-		vim.cmd([[
-        augroup LspFormatting
-            autocmd! * <buffer>
-            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-        augroup END
-        ]])
-	end
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		bufnr = bufnr,
+	})
 end
 
 -- SERVER SETUP
@@ -51,7 +46,7 @@ for _, lsp in ipairs(servers) do
 			debounce_text_changes = 150,
 		},
 		on_attach = function(client)
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.documentFormattingProvider = false
 		end,
 	})
 end
@@ -63,5 +58,16 @@ require("null-ls").setup({
 		require("null-ls").builtins.formatting.stylua,
 		require("null-ls").builtins.diagnostics.eslint_d,
 	},
-	on_attach = on_attach_sync,
+	on_attach = function(client, bufnr)
+		if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					lsp_formatting(bufnr)
+				end,
+			})
+		end
+	end,
 })

@@ -1,6 +1,5 @@
 local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")
-builtin.lsp_code_actions(themes.get_dropdown(opts))
 
 local previewers = require("telescope.previewers")
 local sorters = require("telescope.sorters")
