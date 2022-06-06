@@ -81,7 +81,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: CascadiaCode
+    family: SourceCodePro
     style: Regular
 
     # The `style` can be specified to pick a specific face.
@@ -93,7 +93,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: CascadiaCode
+    family: SourceCodePro
     style: Bold
 
     # The `style` can be specified to pick a specific face.
@@ -105,18 +105,18 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: CascadiaCode
+    family: SourceCode
     style: Italic
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
 
   bold_italic:
-    family: CascadiaCode
+    family: SourceCodePro
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
