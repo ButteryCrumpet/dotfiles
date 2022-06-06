@@ -5,7 +5,7 @@ Plug 'lewis6991/impatient.nvim'
 
 " Debugging
 Plug 'mfussenegger/nvim-dap'
-Plug 'Pocco81/DAPInstall.nvim'
+Plug 'Pocco81/dap-buddy.nvim'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -27,6 +27,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-dap.nvim'
 
 " Language extentions
 Plug 'vim-erlang/vim-erlang-runtime'
@@ -46,8 +47,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Themes
-Plug 'morhetz/gruvbox'
-Plug 'mhartington/oceanic-next'
 Plug 'chriskempson/base16-vim'
 Plug 'dikiaap/minimalist'
 
@@ -62,9 +61,6 @@ call plug#end()
 
 " Nerdtree
 inoremap jk <ESC>
-nmap <C-n> :NERDTreeToggle<CR>
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$', '\.git$[[dir]]']
@@ -88,9 +84,6 @@ let g:airline#extensions#hunks#enabled=0
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
-nnoremap <silent> <C-[> <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> <C-]> <cmd>lua vim.diagnostic.goto_next()<CR>
-
 lua require('impatient')
 luafile ~/.config/nvim/lua/settings.lua
 luafile ~/.config/nvim/lua/lsp.lua
@@ -101,6 +94,7 @@ luafile ~/.config/nvim/lua/comment.lua
 luafile ~/.config/nvim/lua/telescope-conf.lua
 luafile ~/.config/nvim/lua/keybindings.lua
 luafile ~/.config/nvim/lua/gitsigns-conf.lua
+luafile ~/.config/nvim/lua/dap-conf.lua
 
 " GUI
 set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
@@ -109,5 +103,5 @@ set background=dark
 syntax enable
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-set guifont=Hack
+set guifont=SourceCodePro
 colorscheme base16-default-dark

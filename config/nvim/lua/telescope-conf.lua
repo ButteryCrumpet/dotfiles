@@ -14,10 +14,10 @@ local config = {
 		initial_mode = "insert",
 		selection_strategy = "reset",
 		sorting_strategy = "descending",
-		layout_strategy = "horizontal",
+		layout_strategy = "vertical",
 		layout_config = {
-			width = 0.75,
-			preview_cutoff = 120,
+			width = 0.9,
+			preview_height = 0.5,
 			horizontal = { mirror = false },
 			vertical = { mirror = false },
 		},
@@ -63,7 +63,7 @@ local config = {
 	generic_sorter = sorters.get_generic_fuzzy_sorter,
 	pickers = {
 		find_files = {
-			find_command = { "fdfind", "-L", "--type=file", "--hidden" },
+			find_command = { "fdfind", "-L", "--type=file", "--hidden", "--strip-cwd-prefix" },
 		},
 		live_grep = {
 			only_sort_text = true,
@@ -81,3 +81,16 @@ local config = {
 
 telescope.setup(config)
 telescope.load_extension("fzf")
+telescope.load_extension("dap")
+
+local M = {}
+
+M.project_files = function()
+	local opts = {} -- define here if you want to define something
+	local ok = pcall(require("telescope.builtin").git_files, opts)
+	if not ok then
+		require("telescope.builtin").find_files(opts)
+	end
+end
+
+return M
