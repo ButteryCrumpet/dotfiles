@@ -42,7 +42,8 @@ wk.register({
 		b = { "<cmd>lua require'dap'.toggle_breakpoint{}<CR>", "Breakpoint" },
 		r = { "<cmd>lua require'dap'.repl.toggle({ height = 15 })<CR>", "Repl" },
 		v = { "<cmd>lua require'telescope'.extensions.dap.variables{}<CR>", "Vars" },
-		f = { "<cmd>lua require'telescope'.extensions.dap.breakpoints{}<CR>", "Breakpoints" },
+		l = { "<cmd>lua require'telescope'.extensions.dap.list_breakpoints{}<CR>", "Breakpoints" },
+		f = { "<cmd>lua require'telescope'.extensions.dap.frames{}<CR>", "Frames" },
 	},
 }, { prefix = "<leader>", nowait = true })
 
@@ -64,6 +65,6 @@ wk.register({
 	K = { "<cmd>lua vim.lsp.buf.hover{}<CR>", "Hover" },
 	D = { "<cmd>lua vim.diagnostic.open_float{}<CR>", "Line diagnostic" },
 	["<leader>"] = {
-		rn = { "<cmd>lua vim.lsp.buf.rename{}<CR>", "Rename" },
+		rn = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 	},
 }, { nowait = true })
