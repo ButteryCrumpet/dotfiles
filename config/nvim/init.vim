@@ -6,6 +6,7 @@ Plug 'lewis6991/impatient.nvim'
 " Debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'Pocco81/dap-buddy.nvim'
+Plug 'rcarriga/nvim-dap-ui'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -37,6 +38,7 @@ Plug 'raichoo/purescript-vim'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'pantharshit00/vim-prisma' "TODO: treesitter-base one
 Plug 'liuchengxu/graphviz.vim'
+Plug 'jwalton512/vim-blade'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -56,6 +58,8 @@ Plug 'windwp/nvim-autopairs'
 Plug 'numToStr/Comment.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'romainl/vim-cool'
 
 call plug#end()
 
@@ -95,6 +99,11 @@ luafile ~/.config/nvim/lua/telescope-conf.lua
 luafile ~/.config/nvim/lua/keybindings.lua
 luafile ~/.config/nvim/lua/gitsigns-conf.lua
 luafile ~/.config/nvim/lua/dap-conf.lua
+
+set foldmethod=expr
+set foldcolumn=1
+set foldlevelstart=99
+set foldexpr=nvim_treesitter#foldexpr()
 
 " GUI
 set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux

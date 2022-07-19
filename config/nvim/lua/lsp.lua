@@ -56,7 +56,9 @@ require("null-ls").setup({
 		require("null-ls").builtins.formatting.prettier,
 		require("null-ls").builtins.formatting.rustfmt,
 		require("null-ls").builtins.formatting.stylua,
+		require("null-ls").builtins.formatting.phpcsfixer,
 		require("null-ls").builtins.diagnostics.eslint_d,
+		require("null-ls").builtins.diagnostics.phpcs,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

@@ -19,6 +19,10 @@ dap.configurations.typescript = {
 		name = "Attach to process",
 		type = "node2",
 		request = "attach",
+		protocol = "inspector",
+		console = "integratedTerminal",
 		processId = require("dap.utils").pick_process,
 	},
 }
+
+require("dapui").setup()
