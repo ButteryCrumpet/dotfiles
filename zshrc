@@ -104,6 +104,8 @@ export EDITOR="nvim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+eval "$(zoxide init zsh)"
+
 # PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
