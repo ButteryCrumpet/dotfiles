@@ -29,6 +29,8 @@ alias fzrm='rm $(fzf)'
 ## python -> python3
 alias python='python3'
 
+alias clang='clang-12'
+
 # File helpers
 # echo file line
 eln() {
@@ -45,4 +47,12 @@ dotenvar() {
 
 sleepto() {
   sleep $(echo "$(date -d "$1" +%s) - $(date +%s)" | bc)
+}
+
+weather() {
+  curl "wttr.in/${1:-Funabashi}\?format=v2" 
+}
+
+tohub() {
+  open $(git remote get-url ${1:-origin})
 }

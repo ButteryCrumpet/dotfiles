@@ -201,7 +201,7 @@ local source_names = {
 local duplicates = {
 	buffer = 1,
 	path = 1,
-	nvim_lsp = 0,
+	nvim_lsp = 1,
 	luasnip = 1,
 }
 

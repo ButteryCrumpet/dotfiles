@@ -2,9 +2,16 @@
 
 [[private]]
 path = ~/.calendars/private
+color = dark green
 
 [[work]]
 path = ~/.calendars/work
+color = light magenta
+
+[[holidays]]
+path = ~/.calendars/holidays
+readonly = True
+color = light cyan
 
 [locale]
 timeformat = %H:%M
@@ -20,4 +27,4 @@ timedelta = 7 days
 show_all_days = false
 
 [highlight_days]
-color = light green
+default_color = dark green

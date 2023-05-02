@@ -18,6 +18,7 @@ Plug("hrsh7th/cmp-path")
 Plug("L3MON4D3/LuaSnip")
 Plug("saadparwaiz1/cmp_luasnip")
 Plug("jose-elias-alvarez/null-ls.nvim")
+Plug("github/copilot.vim")
 
 -- Navigation
 Plug("folke/which-key.nvim")
@@ -44,6 +45,7 @@ Plug("jwalton512/vim-blade")
 -- Treesitter
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 Plug("romgrk/nvim-treesitter-context")
+Plug("ziontee113/syntax-tree-surfer")
 
 -- Airline
 Plug("vim-airline/vim-airline")
@@ -52,6 +54,8 @@ Plug("vim-airline/vim-airline-themes")
 -- Themes
 Plug("chriskempson/base16-vim")
 Plug("dikiaap/minimalist")
+Plug("marko-cerovac/material.nvim")
+Plug("danilo-augusto/vim-afterglow")
 
 -- UX
 Plug("tpope/vim-surround")
@@ -61,6 +65,7 @@ Plug("JoosepAlviste/nvim-ts-context-commentstring")
 Plug("lewis6991/gitsigns.nvim")
 Plug("lukas-reineke/indent-blankline.nvim")
 Plug("romainl/vim-cool")
+Plug("folke/trouble.nvim")
 
 vim.call("plug#end")
 
@@ -118,3 +123,9 @@ vim.opt.background = "dark"
 vim.g.oceanic_next_terminal_bold = 1
 vim.g.oceanic_next_terminal_italic = 1
 vim.opt.guifont = "SourceCodePro"
+
+-- Copilot
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
+require("trouble").setup({})

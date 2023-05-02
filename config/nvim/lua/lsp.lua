@@ -21,7 +21,7 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 	return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
 	properties = {
@@ -38,7 +38,7 @@ local lsp_formatting = function(bufnr)
 end
 
 -- SERVER SETUP
-local servers = { "erlangls", "ocamlls", "rust_analyzer", "intelephense", "tsserver" }
+local servers = { "erlangls", "ocamlls", "rust_analyzer", "intelephense", "pyright", "csharp_ls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		capablities = capablities,
@@ -50,6 +50,17 @@ for _, lsp in ipairs(servers) do
 		end,
 	})
 end
+
+nvim_lsp["tsserver"].setup({
+	capablities = capablities,
+	root_dir = require("lspconfig.util").root_pattern(".git"),
+	flags = {
+		debounce_text_changes = 150,
+	},
+	on_attach = function(client)
+		client.server_capabilities.documentFormattingProvider = false
+	end,
+})
 
 require("null-ls").setup({
 	sources = {
