@@ -1,47 +1,45 @@
 local settings = {
-	backup = false,
-	clipboard = "unnamedplus",
-	cmdheight = 2,
-	colorcolumn = "99999",
-	completeopt = { "menuone", "noselect" },
-	conceallevel = 0,
-	fileencoding = "utf-8",
-	foldmethod = "manual",
-	foldexpr = "",
-	guifont = "monospace:h17",
-	hidden = true,
-	hlsearch = true,
-	ignorecase = true,
-	mouse = "a",
-	pumheight = 10,
-	showmode = false,
-	showtabline = 2,
-	smartcase = true,
-	smartindent = true,
-	splitbelow = true,
-	splitright = true,
-	swapfile = false,
-	termguicolors = true,
-	timeoutlen = 100,
-	title = true,
-	-- opt.titlestring = "%<%F%=%l/%L - nvim"
-	undofile = true,
-	updatetime = 300,
-	writebackup = false,
-	autoread = true,
-	expandtab = true,
-	shiftwidth = 2,
-	tabstop = 2,
-	cursorline = true,
+	nu = true,
 	relativenumber = true,
-	number = true,
 	numberwidth = 4,
-	signcolumn = "yes",
+
+	cursorline = true,
+
+	tabstop = 4,
+	softtabstop = 4,
+	shiftwidth = 4,
+	expandtab = true,
+	smartindent = true,
+
 	wrap = false,
-	spell = false,
-	spelllang = "en",
+
+	swapfile = false,
+	backup = false,
+	undofile = true,
+
+	hlsearch = false,
+	incsearch = true,
+	ignorecase = true,
+	smartcase = true,
+
+	termguicolors = true,
+
 	scrolloff = 8,
-	sidescrolloff = 8,
+	signcolumn = "yes",
+	isfname = vim.opt.isfname + { "@-@" },
+
+	updatetime = 50,
+
+	-- colors a column at the given width
+	colorcolumn = "0",
+
+	cmdheight = 2,
+	fileencoding = "utf-8",
+
+	foldmethod = "expr",
+	foldcolumn = "1",
+	foldlevelstart = 99,
+	foldexpr = vim.fn["nvim_treesitter#foldexpr"](),
 }
 
 for k, v in pairs(settings) do

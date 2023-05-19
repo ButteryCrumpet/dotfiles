@@ -1,4 +1,5 @@
 local wk = require("which-key")
+local builtin = require("telescope.builtin")
 
 wk.register({
 	["<leader>"] = { "<cmd>lua require'telescope-conf'.project_files()<CR>", "Files" }, -- CReate a binding with label
@@ -6,7 +7,12 @@ wk.register({
 		name = "file", -- optional group name
 		f = { "<cmd>Telescope find_files<CR>", "Files" }, -- CReate a binding with label
 		r = { "<cmd>Telescope oldfiles<CR>", "Recent" }, -- additional options for CReating the keymap
-		g = { "<cmd>Telescope live_grep<CR>", "Recent" }, -- additional options for CReating the keymap
+		g = {
+			function()
+				builtin.grep_string({ search = vim.fn.input("Grep > ") })
+			end,
+			"Recent",
+		},
 		b = { "<cmd>Telescope buffers<CR>", "Buffers" },
 		B = { "<cmd>Telescope git_branches<CR>", "Checkout branch" },
 	},
@@ -70,3 +76,39 @@ wk.register({
 		rn = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 	},
 }, { nowait = true })
+
+-- Move selection up/down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Append next line to current line
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- Page move centres cursor
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- Search centre cursor
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Register preserve paste
+vim.keymap.set("x", "<leader>p", '"_dP')
+-- Register preserve delete
+vim.keymap.set("n", "<leader>d", '"_d')
+vim.keymap.set("v", "<leader>d", '"_d')
+
+-- Yank to clipboard
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
+
+-- Replace all word instances
+vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
+-- Bump right in insert mode
+vim.keymap.set("i", "<C-l>", "<Right>")
+
+vim.keymap.set("n", "<Right>", "<nop>")
+vim.keymap.set("n", "<Left>", "<nop>")
+vim.keymap.set("n", "<Up>", "<nop>")
+vim.keymap.set("n", "<Down>", "<nop>")

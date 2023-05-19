@@ -11,20 +11,30 @@ Plug("rcarriga/nvim-dap-ui")
 
 -- LSP
 Plug("neovim/nvim-lspconfig")
+Plug("williamboman/mason.nvim", {
+	run = function()
+		pcall(vim.cmd, "MasonUpdate")
+	end,
+})
+Plug("williamboman/mason-lspconfig.nvim")
+Plug("jose-elias-alvarez/null-ls.nvim")
+Plug("zbirenbaum/copilot.lua")
+
+-- AutoCompletion
 Plug("hrsh7th/nvim-cmp")
 Plug("hrsh7th/cmp-nvim-lsp")
 Plug("hrsh7th/cmp-buffer")
 Plug("hrsh7th/cmp-path")
 Plug("L3MON4D3/LuaSnip")
 Plug("saadparwaiz1/cmp_luasnip")
-Plug("jose-elias-alvarez/null-ls.nvim")
-Plug("github/copilot.vim")
+Plug("zbirenbaum/copilot-cmp")
+
+-- Auto Config
+Plug("VonHeikemen/lsp-zero.nvim", { branch = "v2.x" })
 
 -- Navigation
 Plug("folke/which-key.nvim")
 Plug("scrooloose/nerdtree")
-Plug("Xuyuanp/nerdtree-git-plugin")
-Plug("tiagofumo/vim-nerdtree-syntax-highlight")
 Plug("ryanoasis/vim-devicons")
 Plug("airblade/vim-gitgutter")
 Plug("scrooloose/nerdcommenter")
@@ -52,6 +62,7 @@ Plug("vim-airline/vim-airline")
 Plug("vim-airline/vim-airline-themes")
 
 -- Themes
+Plug("rose-pine/neovim", { as = "rose-pine" })
 Plug("chriskempson/base16-vim")
 Plug("dikiaap/minimalist")
 Plug("marko-cerovac/material.nvim")
@@ -72,7 +83,6 @@ vim.call("plug#end")
 -- Nerdtree
 vim.api.nvim_set_keymap("i", "jk", "<ESC>", { noremap = true })
 vim.g.NERDTreeShowHidden = 1
-vim.g.NERDTreeShowHidden = 1
 vim.g.NERDTreeGitStatusWithFlags = 1
 vim.g.NERDTreeIgnore = { "^node_modules$", "\\.git$[[dir]]" }
 
@@ -92,40 +102,21 @@ if not vim.g.airline_symbols then
 end
 vim.g["airline#extensions#hunks#enabled"] = 0
 
+-- Block Indenting
 vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
 
 require("impatient")
-require("settings")
-require("lsp")
-require("comp")
-require("autopairs")
 require("treesitter")
-require("comment")
 require("telescope-conf")
+require("comp")
+require("lsp")
+require("settings")
+require("colour")
+require("autopairs")
+require("comment")
 require("keybindings")
 require("gitsigns-conf")
 require("dap-conf")
-
-vim.opt.foldmethod = "expr"
-vim.opt.foldcolumn = "1"
-vim.opt.foldlevelstart = 99
-vim.opt.foldexpr = vim.fn["nvim_treesitter#foldexpr"]()
-
--- GUI
-vim.cmd([[
-  syntax enable
-  colorscheme base16-default-dark
-  set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
-  set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
-]])
-vim.opt.background = "dark"
-vim.g.oceanic_next_terminal_bold = 1
-vim.g.oceanic_next_terminal_italic = 1
-vim.opt.guifont = "SourceCodePro"
-
--- Copilot
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 require("trouble").setup({})
