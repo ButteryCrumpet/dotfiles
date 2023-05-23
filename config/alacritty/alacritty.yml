@@ -50,7 +50,7 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: full
-  opacity: 0.8
+  opacity: 0.5
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -143,7 +143,7 @@ draw_bold_text_with_bright_colors: true
 # Colors (Tomorrow Night Bright)
 colors:
   primary:
-    background: "#212121"
+    background: "#000000"
     foreground: "#c0c5ce"
     bright_foreground: "#f3f4f5"
 

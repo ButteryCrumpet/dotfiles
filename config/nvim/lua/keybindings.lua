@@ -56,14 +56,12 @@ wk.register({
 }, { prefix = "<leader>", nowait = true })
 
 wk.register({
-	["<C-n>"] = { "<cmd>NERDTreeToggle<CR>", "Open Folder Navigator" },
 	g = {
 		name = "LSP",
 		d = { "<cmd>lua require'telescope.builtin'.lsp_definitions()<CR>", "Go to definition" },
 		D = { "<cmd>lua require'telescope.builtin'.diagnostics{ bufnr = 0 }<CR>", "List diagnostics" },
 		r = { "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", "Go to references" },
 		i = { "<cmd>lua require'telescope.builtin'.lsp_implementations()<CR>", "Go to implementation" },
-		p = { "<cmd>lua vim.lsp.buf.preview_location()<CR>", "Peek definition" },
 		s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Peek signature" },
 		f = { "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", "Format" },
 		h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },

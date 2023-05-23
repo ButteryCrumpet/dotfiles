@@ -34,7 +34,7 @@ Plug("VonHeikemen/lsp-zero.nvim", { branch = "v2.x" })
 
 -- Navigation
 Plug("folke/which-key.nvim")
-Plug("scrooloose/nerdtree")
+Plug("stevearc/oil.nvim")
 Plug("ryanoasis/vim-devicons")
 Plug("airblade/vim-gitgutter")
 Plug("scrooloose/nerdcommenter")
@@ -67,6 +67,7 @@ Plug("chriskempson/base16-vim")
 Plug("dikiaap/minimalist")
 Plug("marko-cerovac/material.nvim")
 Plug("danilo-augusto/vim-afterglow")
+Plug("folke/tokyonight.nvim")
 
 -- UX
 Plug("tpope/vim-surround")
@@ -80,12 +81,6 @@ Plug("folke/trouble.nvim")
 
 vim.call("plug#end")
 
--- Nerdtree
-vim.api.nvim_set_keymap("i", "jk", "<ESC>", { noremap = true })
-vim.g.NERDTreeShowHidden = 1
-vim.g.NERDTreeGitStatusWithFlags = 1
-vim.g.NERDTreeIgnore = { "^node_modules$", "\\.git$[[dir]]" }
-
 -- Airline
 vim.g.airline_theme = "minimalist"
 vim.g.airline_extensions = { "branch", "hunks" }
@@ -93,7 +88,6 @@ vim.g.airline_section_z = vim.fn["airline#section#create"]({ "linenr" })
 vim.g.airline_skip_empty_sections = 1
 vim.g["airline#extensions#tabline#formatter"] = "unique_tail"
 vim.g["airline#extensions#default#layout"] = { { "a", "b", "c" }, { "x", "z", "warning", "error" } }
-vim.g.NERDTreeStatusline = ""
 vim.g.airline_exclude_preview = 1
 vim.g.airline_powerline_fonts = 1
 vim.g.airline_highlighting_cache = 1
@@ -118,5 +112,6 @@ require("comment")
 require("keybindings")
 require("gitsigns-conf")
 require("dap-conf")
+require("oil-conf")
 
 require("trouble").setup({})
