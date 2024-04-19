@@ -50,7 +50,7 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: full
-  opacity: 0.5
+  opacity: 0.7
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -81,7 +81,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: SourceCodePro
+    family: MonaspaceKrypton
     style: Regular
 
     # The `style` can be specified to pick a specific face.
@@ -93,7 +93,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SourceCodePro
+    family: MonaspaceKrypton
     style: Bold
 
     # The `style` can be specified to pick a specific face.
@@ -105,14 +105,14 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SourceCode
+    family: MonaspaceRadon
     style: Italic
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
 
   bold_italic:
-    family: SourceCodePro
+    family: MonaspaceRadon
     style: Bold Italic
 
   # Point size
@@ -299,9 +299,6 @@ live_config_reload: true
 # Alacritty will fall back to the WinPTY automatically if the ConPTY
 # backend cannot be initialized.
 enable_experimental_conpty_backend: false
-
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
 
 # Key bindings
 #

@@ -1,4 +1,3 @@
-require("rose-pine").setup({ disable_background = true })
 require("tokyonight").setup({
 	transparent = true,
 	on_highlight = function(h1, c)
@@ -6,9 +5,7 @@ require("tokyonight").setup({
 	end,
 })
 
-function ColorMyPencils(color)
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
+function ColorSetup()
 	vim.cmd([[
         set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
         set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
@@ -18,6 +15,7 @@ function ColorMyPencils(color)
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
+vim.api.nvim_create_autocmd({ "ColorScheme" }, { callback = ColorSetup })
 -- base16-default-dark
 -- tokyonight
-ColorMyPencils("tokyonight-moon")
+vim.cmd.colorscheme("tokyonight")

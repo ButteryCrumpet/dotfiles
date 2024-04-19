@@ -1,5 +1,4 @@
 local config = {
-	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	ignore_install = {},
 	matchup = {
 		enable = false, -- mandatory, false will disable the whole extension
@@ -8,19 +7,6 @@ local config = {
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		additional_vim_regex_highlighting = false,
-	},
-	context_commentstring = {
-		enable = true,
-		config = {
-			-- Languages that have a single comment style
-			typescript = "// %s",
-			css = "/* %s */",
-			scss = "/* %s */",
-			html = "<!-- %s -->",
-			svelte = "<!-- %s -->",
-			vue = "<!-- %s -->",
-			json = "",
-		},
 	},
 	-- indent = {enable = true, disable = {"python", "html", "javascript"}},
 	-- TODO seems to be broken
@@ -68,3 +54,19 @@ local config = {
 
 local treesitter_configs = require("nvim-treesitter.configs")
 treesitter_configs.setup(config)
+
+local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+treesitter_parser_config.templ = {
+	install_info = {
+		url = "https://github.com/vrischmann/tree-sitter-templ.git",
+		files = { "src/parser.c", "src/scanner.c" },
+		branch = "master",
+	},
+}
+
+vim.treesitter.language.register("templ", "templ")
+vim.treesitter.language.register("html", "ejs")
+
+require("nvim-treesitter.configs").setup({})
+require("ts_context_commentstring").setup({})
+vim.g.skip_ts_context_commentstring_module = true

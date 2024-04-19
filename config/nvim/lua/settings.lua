@@ -45,3 +45,19 @@ local settings = {
 for k, v in pairs(settings) do
 	vim.opt[k] = v
 end
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = { "*.ts", "*.js", "*.jsx", "*.tsx", "*.md", "*.json" },
+	callback = function()
+		vim.opt.tabstop = 2
+		vim.opt.softtabstop = 2
+		vim.opt.shiftwidth = 2
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.ejs" },
+	callback = function()
+		vim.opt.filetype = "html"
+	end,
+})

@@ -4,7 +4,7 @@ local builtin = require("telescope.builtin")
 wk.register({
 	["<leader>"] = { "<cmd>lua require'telescope-conf'.project_files()<CR>", "Files" }, -- CReate a binding with label
 	f = {
-		name = "file", -- optional group name
+		name = "find", -- optional group name
 		f = { "<cmd>Telescope find_files<CR>", "Files" }, -- CReate a binding with label
 		r = { "<cmd>Telescope oldfiles<CR>", "Recent" }, -- additional options for CReating the keymap
 		g = {
@@ -15,6 +15,8 @@ wk.register({
 		},
 		b = { "<cmd>Telescope buffers<CR>", "Buffers" },
 		B = { "<cmd>Telescope git_branches<CR>", "Checkout branch" },
+		c = { "<cmd>Telescope colorscheme<CR>", "colorscheme" },
+		m = { "<cmd>lua require 'telescope.builtin'.marks()<CR>", "marks" },
 	},
 	g = {
 		name = "Git",
@@ -63,8 +65,9 @@ wk.register({
 		r = { "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", "Go to references" },
 		i = { "<cmd>lua require'telescope.builtin'.lsp_implementations()<CR>", "Go to implementation" },
 		s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Peek signature" },
-		f = { "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", "Format" },
+		f = { "<cmd>FormatWriteLock", "Format" },
 		h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+		a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
 		n = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next diagnostic" },
 		p = { "<cmd>lua vim.diagnostic.goto_previous()<CR>", "Previous diagnostic" },
 	},
@@ -105,8 +108,13 @@ vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 
 -- Bump right in insert mode
 vim.keymap.set("i", "<C-l>", "<Right>")
+vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "<Right>", "<nop>")
 vim.keymap.set("n", "<Left>", "<nop>")
 vim.keymap.set("n", "<Up>", "<nop>")
 vim.keymap.set("n", "<Down>", "<nop>")
+
+vim.keymap.set("n", "gt", function()
+	vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled(0))
+end, { desc = "Toggle Inlay Hints" })

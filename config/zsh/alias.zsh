@@ -31,6 +31,8 @@ alias python='python3'
 
 alias clang='clang-12'
 
+alias next='task project:nextup'
+
 # File helpers
 # echo file line
 eln() {

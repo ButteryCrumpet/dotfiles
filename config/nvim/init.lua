@@ -7,6 +7,7 @@ Plug("lewis6991/impatient.nvim")
 -- Debugging
 Plug("mfussenegger/nvim-dap")
 Plug("Pocco81/dap-buddy.nvim")
+Plug("nvim-neotest/nvim-nio")
 Plug("rcarriga/nvim-dap-ui")
 
 -- LSP
@@ -17,7 +18,8 @@ Plug("williamboman/mason.nvim", {
 	end,
 })
 Plug("williamboman/mason-lspconfig.nvim")
-Plug("jose-elias-alvarez/null-ls.nvim")
+Plug("stevearc/conform.nvim")
+Plug("mfussenegger/nvim-lint")
 Plug("zbirenbaum/copilot.lua")
 
 -- AutoCompletion
@@ -30,7 +32,7 @@ Plug("saadparwaiz1/cmp_luasnip")
 Plug("zbirenbaum/copilot-cmp")
 
 -- Auto Config
-Plug("VonHeikemen/lsp-zero.nvim", { branch = "v2.x" })
+Plug("VonHeikemen/lsp-zero.nvim", { branch = "v3.x" })
 
 -- Navigation
 Plug("folke/which-key.nvim")
@@ -54,15 +56,16 @@ Plug("jwalton512/vim-blade")
 
 -- Treesitter
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
+Plug("vrischmann/tree-sitter-templ")
 Plug("romgrk/nvim-treesitter-context")
 Plug("ziontee113/syntax-tree-surfer")
+Plug("nvim-treesitter/playground")
 
 -- Airline
 Plug("vim-airline/vim-airline")
 Plug("vim-airline/vim-airline-themes")
 
 -- Themes
-Plug("rose-pine/neovim", { as = "rose-pine" })
 Plug("chriskempson/base16-vim")
 Plug("dikiaap/minimalist")
 Plug("marko-cerovac/material.nvim")
@@ -78,6 +81,7 @@ Plug("lewis6991/gitsigns.nvim")
 Plug("lukas-reineke/indent-blankline.nvim")
 Plug("romainl/vim-cool")
 Plug("folke/trouble.nvim")
+Plug("nvim-telescope/telescope-ui-select.nvim")
 
 vim.call("plug#end")
 
