@@ -6,6 +6,13 @@ dap.adapters.node2 = {
 	command = "node",
 	args = { os.getenv("HOME") .. "/sources/vscode-node-debug2/out/src/nodeDebug.js" },
 }
+
+dap.adapters.gdb = {
+	type = "executable",
+	command = "gdb",
+	args = { "-i", "dap" },
+}
+
 dap.configurations.typescript = {
 	{
 		name = "Launch",
@@ -24,6 +31,17 @@ dap.configurations.typescript = {
 		protocol = "inspector",
 		console = "integratedTerminal",
 		processId = require("dap.utils").pick_process,
+	},
+}
+
+dap.configurations.zig = {
+	{
+		ame = "Launch",
+		type = "gdb",
+		program = "${file}",
+		request = "launch",
+		protocol = "inspector",
+		console = "integratedTerminal",
 	},
 }
 

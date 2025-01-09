@@ -104,6 +104,13 @@ vim.g["airline#extensions#hunks#enabled"] = 0
 vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
 
+vim.filetype.add({
+	extension = {
+		frag = "glsl",
+		vert = "glsl",
+	},
+})
+
 require("impatient")
 require("treesitter")
 require("telescope-conf")
