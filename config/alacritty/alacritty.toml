@@ -1,6 +1,5 @@
-enable_experimental_conpty_backend = false
+[general]
 live_config_reload = true
-"window.dynamic_title" = true
 
 [bell]
 animation = "EaseOutExpo"
@@ -35,7 +34,7 @@ white = "#c0c5ce"
 yellow = "#fac863"
 
 [colors.primary]
-background = "#000000"
+background = "#1d1f21"
 bright_foreground = "#f3f4f5"
 foreground = "#c0c5ce"
 
@@ -45,30 +44,33 @@ unfocused_hollow = true
 
 [font]
 size = 12.0
+normal = { family = "MonaspaceKrypton", style = "Regular" }
+bold = { family = "MonaspaceKrypton", style = "Bold" }
+italic = { family = "MonaspaceRadon", style = "Italic" }
+bold_italic = { family = "MonaspaceRadon", style = "Bold Italic" }
+glyph_offset = { x = 0, y = 0 }
+offset = { x = 0, y = 0 }
 
-[font.bold]
-family = "MonaspaceKrypton"
-style = "Bold"
+[mouse]
+hide_when_typing = true
 
-[font.bold_italic]
-family = "MonaspaceRadon"
-style = "Bold Italic"
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
 
-[font.glyph_offset]
-x = 0
-y = 0
+[scrolling]
+history = 10000
+multiplier = 3
 
-[font.italic]
-family = "MonaspaceRadon"
-style = "Italic"
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[font.normal]
-family = "MonaspaceKrypton"
-style = "Regular"
-
-[font.offset]
-x = 0
-y = 0
+[window]
+decorations = "full"
+dynamic_padding = false
+opacity = 1.0
+padding = { x = 2, y = 2 }
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -585,37 +587,3 @@ chars = """
 
 """
 key = "NumpadEnter"
-
-[mouse]
-hide_when_typing = false
-
-[[mouse.bindings]]
-action = "PasteSelection"
-mouse = "Middle"
-
-[mouse.double_click]
-threshold = 300
-
-[mouse.triple_click]
-threshold = 300
-
-[scrolling]
-history = 10000
-multiplier = 3
-
-[selection]
-save_to_clipboard = false
-semantic_escape_chars = ",│`|:\"' ()[]{}<>"
-
-[window]
-decorations = "full"
-dynamic_padding = false
-opacity = 1
-
-[window.dimensions]
-columns = 0
-lines = 0
-
-[window.padding]
-x = 2
-y = 2
