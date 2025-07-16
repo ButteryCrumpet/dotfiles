@@ -5,6 +5,8 @@ require("tokyonight").setup({
 	end,
 })
 
+require("bamboo").load()
+
 function ColorSetup()
 	vim.cmd([[
         set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
@@ -18,4 +20,5 @@ end
 vim.api.nvim_create_autocmd({ "ColorScheme" }, { callback = ColorSetup })
 -- base16-default-dark
 -- tokyonight
-vim.cmd.colorscheme("tokyonight")
+-- bamboo
+vim.cmd.colorscheme("bamboo")

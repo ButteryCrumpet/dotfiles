@@ -26,6 +26,15 @@ require("mason-lspconfig").setup({
 		function(server_name)
 			nvim_lsp[server_name].setup({})
 		end,
+        rust_analyzer = function()
+            nvim_lsp.rust_analyzer.setup({
+                procMacro = {
+                    ignored = {
+                        ['napi-derive'] = { 'napi' },
+                    },
+                },
+            })
+        end,
 		tailwindcss = function()
 			nvim_lsp.tailwindcss.setup({
 				autostart = false,
@@ -76,7 +85,7 @@ require("conform").setup({
 		typescriptreact = { "prettierd" },
 		markdown = { "markdownlint" },
 		python = { "black" },
-		php = { "php-cs-fixer" },
+		php = { "php_cs_fixer" },
 		rust = { "rustfmt" },
 		ocaml = { "ocamlformat" },
 		go = { "gofmt" },
@@ -110,3 +119,7 @@ require("copilot").setup({
 	panel = { enabled = false },
 })
 require("copilot_cmp").setup()
+
+require("render-markdown").setup({
+    completions = { lsp = { enabled = true } },
+})

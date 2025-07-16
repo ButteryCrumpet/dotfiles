@@ -54,7 +54,7 @@ wk.add({
 	{ "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", desc = "Go to references" },
 	{ "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations()<CR>", desc = "Go to implementation" },
 	{ "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "Peek signature" },
-	{ "gf", "<cmd>lua require'conform'.format({ async = true, lsp_fallback = true })", desc = "Format" },
+	{ "gf", "<cmd>lua require'conform'.format({ async = true, lsp_fallback = true })<CR>", desc = "Format" },
 	{ "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "Hover" },
 	{ "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code Action" },
 	{ "gn", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next diagnostic" },

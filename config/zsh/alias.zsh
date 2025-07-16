@@ -54,7 +54,7 @@ sleepto() {
 }
 
 weather() {
-  curl "wttr.in/${1:-Funabashi}\?format=v2" 
+  curl "wttr.in/${1:-Toyoshiki}\?format=${2:-v2}" 
 }
 
 tohub() {

@@ -53,6 +53,7 @@ Plug("styled-components/vim-styled-components", { branch = "main" })
 Plug("pantharshit00/vim-prisma") -- TODO: treesitter-base one
 Plug("liuchengxu/graphviz.vim")
 Plug("jwalton512/vim-blade")
+Plug("MeanderingProgrammer/render-markdown.nvim")
 
 -- Treesitter
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
@@ -71,6 +72,7 @@ Plug("dikiaap/minimalist")
 Plug("marko-cerovac/material.nvim")
 Plug("danilo-augusto/vim-afterglow")
 Plug("folke/tokyonight.nvim")
+Plug("ribru17/bamboo.nvim")
 
 -- UX
 Plug("tpope/vim-surround")
@@ -88,7 +90,7 @@ vim.call("plug#end")
 -- Airline
 vim.g.airline_theme = "minimalist"
 vim.g.airline_extensions = { "branch", "hunks" }
-vim.g.airline_section_z = vim.fn["airline#section#create"]({ "linenr" })
+vim.g.airline_section_z = vim.fn["airline#section#create"]({ "linenr", "colnr" })
 vim.g.airline_skip_empty_sections = 1
 vim.g["airline#extensions#tabline#formatter"] = "unique_tail"
 vim.g["airline#extensions#default#layout"] = { { "a", "b", "c" }, { "x", "z", "warning", "error" } }

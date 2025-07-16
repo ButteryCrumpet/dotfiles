@@ -5,13 +5,14 @@ path = ~/.calendars/private
 color = dark green
 
 [[work]]
-path = ~/.calendars/work
-color = light magenta
+path = ~/.calendars/work/simon@issuehunt.io
+color = 153
+readonly = True
 
 [[holidays]]
 path = ~/.calendars/holidays
-readonly = True
 color = light cyan
+readonly = True
 
 [locale]
 timeformat = %H:%M
