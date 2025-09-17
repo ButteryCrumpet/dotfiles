@@ -114,11 +114,11 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	end,
 })
 
-require("copilot").setup({
-	suggestion = { enabled = false },
-	panel = { enabled = false },
-})
-require("copilot_cmp").setup()
+-- require("copilot").setup({
+-- 	suggestion = { enabled = false },
+-- 	panel = { enabled = false },
+-- })
+-- require("copilot_cmp").setup()
 
 require("render-markdown").setup({
     completions = { lsp = { enabled = true } },

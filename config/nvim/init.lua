@@ -1,91 +1,95 @@
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin", "~/.vim/plugged")
--- Deps
-Plug("nvim-lua/plenary.nvim")
-Plug("lewis6991/impatient.nvim")
+vim.pack.add({
+	-- Deps
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+	{ src = "https://github.com/lewis6991/impatient.nvim" },
 
--- Debugging
-Plug("mfussenegger/nvim-dap")
-Plug("Pocco81/dap-buddy.nvim")
-Plug("nvim-neotest/nvim-nio")
-Plug("rcarriga/nvim-dap-ui")
+	-- Debugging
+	{ src = "https://github.com/mfussenegger/nvim-dap" },
+	{ src = "https://github.com/Pocco81/dap-buddy.nvim" },
+	{ src = "https://github.com/nvim-neotest/nvim-nio" },
+	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
 
--- LSP
-Plug("neovim/nvim-lspconfig")
-Plug("williamboman/mason.nvim", {
-	run = function()
-		pcall(vim.cmd, "MasonUpdate")
+	-- LSP
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/williamboman/mason.nvim"},
+	{ src = "https://github.com/williamboman/mason-lspconfig.nvim" },
+	{ src = "https://github.com/stevearc/conform.nvim" },
+	{ src = "https://github.com/mfussenegger/nvim-lint" },
+	-- { src = "https://github.com/zbirenbaum/copilot.lua" },
+
+	-- AutoCompletion
+	{ src = "https://github.com/hrsh7th/nvim-cmp" },
+	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+	{ src = "https://github.com/hrsh7th/cmp-buffer" },
+	{ src = "https://github.com/hrsh7th/cmp-path" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip" },
+	{ src = "https://github.com/saadparwaiz1/cmp_luasnip" },
+	{ src = "https://github.com/zbirenbaum/copilot-cmp" },
+
+	-- Auto Config
+	{ src = "https://github.com/VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+
+	-- Navigation
+	{ src = "https://github.com/folke/which-key.nvim" },
+	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/ryanoasis/vim-devicons" },
+	{ src = "https://github.com/airblade/vim-gitgutter" },
+	{ src = "https://github.com/scrooloose/nerdcommenter" },
+	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", ["do"] = "make" },
+	{ src = "https://github.com/nvim-telescope/telescope-dap.nvim" },
+
+	-- Language extentions
+	{ src = "https://github.com/vim-erlang/vim-erlang-runtime" },
+	{ src = "https://github.com/reasonml-editor/vim-reason-plus" },
+	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
+	{ src = "https://github.com/raichoo/purescript-vim" },
+	{ src = "https://github.com/styled-components/vim-styled-components", branch = "main" },
+	{ src = "https://github.com/pantharshit00/vim-prisma" }, -- TODO: treesitter-base one
+	{ src = "https://github.com/liuchengxu/graphviz.vim" },
+	{ src = "https://github.com/jwalton512/vim-blade" },
+	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+
+	-- Treesitter
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate" },
+	{ src = "https://github.com/vrischmann/tree-sitter-templ" },
+	{ src = "https://github.com/romgrk/nvim-treesitter-context" },
+	{ src = "https://github.com/ziontee113/syntax-tree-surfer" },
+	{ src = "https://github.com/nvim-treesitter/playground" },
+
+	-- Airline
+	{ src = "https://github.com/vim-airline/vim-airline" },
+	{ src = "https://github.com/vim-airline/vim-airline-themes" },
+
+	-- Themes
+	{ src = "https://github.com/chriskempson/base16-vim" },
+	{ src = "https://github.com/dikiaap/minimalist" },
+	{ src = "https://github.com/marko-cerovac/material.nvim" },
+	{ src = "https://github.com/danilo-augusto/vim-afterglow" },
+	{ src = "https://github.com/folke/tokyonight.nvim" },
+	{ src = "https://github.com/ribru17/bamboo.nvim" },
+
+	-- UX
+	{ src = "https://github.com/tpope/vim-surround" },
+	{ src = "https://github.com/windwp/nvim-autopairs" },
+	{ src = "https://github.com/numToStr/Comment.nvim" },
+	{ src = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
+	{ src = "https://github.com/romainl/vim-cool" },
+	{ src = "https://github.com/folke/trouble.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
+
+})
+
+vim.api.nvim_create_autocmd({'PackChanged'}, {
+	callback = function(args)
+		if args.data.kind ~= 'delete' and args.data.spec.name == 'telescope-fzf-native.nvim' then
+			os.execute("cd " .. args.data.path .. " && make")
+		end
 	end,
 })
-Plug("williamboman/mason-lspconfig.nvim")
-Plug("stevearc/conform.nvim")
-Plug("mfussenegger/nvim-lint")
-Plug("zbirenbaum/copilot.lua")
 
--- AutoCompletion
-Plug("hrsh7th/nvim-cmp")
-Plug("hrsh7th/cmp-nvim-lsp")
-Plug("hrsh7th/cmp-buffer")
-Plug("hrsh7th/cmp-path")
-Plug("L3MON4D3/LuaSnip")
-Plug("saadparwaiz1/cmp_luasnip")
-Plug("zbirenbaum/copilot-cmp")
-
--- Auto Config
-Plug("VonHeikemen/lsp-zero.nvim", { branch = "v3.x" })
-
--- Navigation
-Plug("folke/which-key.nvim")
-Plug("stevearc/oil.nvim")
-Plug("ryanoasis/vim-devicons")
-Plug("airblade/vim-gitgutter")
-Plug("scrooloose/nerdcommenter")
-Plug("nvim-telescope/telescope.nvim")
-Plug("nvim-telescope/telescope-fzf-native.nvim", { ["do"] = "make" })
-Plug("nvim-telescope/telescope-dap.nvim")
-
--- Language extentions
-Plug("vim-erlang/vim-erlang-runtime")
-Plug("reasonml-editor/vim-reason-plus")
-Plug("christoomey/vim-tmux-navigator")
-Plug("raichoo/purescript-vim")
-Plug("styled-components/vim-styled-components", { branch = "main" })
-Plug("pantharshit00/vim-prisma") -- TODO: treesitter-base one
-Plug("liuchengxu/graphviz.vim")
-Plug("jwalton512/vim-blade")
-Plug("MeanderingProgrammer/render-markdown.nvim")
-
--- Treesitter
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
-Plug("vrischmann/tree-sitter-templ")
-Plug("romgrk/nvim-treesitter-context")
-Plug("ziontee113/syntax-tree-surfer")
-Plug("nvim-treesitter/playground")
-
--- Airline
-Plug("vim-airline/vim-airline")
-Plug("vim-airline/vim-airline-themes")
-
--- Themes
-Plug("chriskempson/base16-vim")
-Plug("dikiaap/minimalist")
-Plug("marko-cerovac/material.nvim")
-Plug("danilo-augusto/vim-afterglow")
-Plug("folke/tokyonight.nvim")
-Plug("ribru17/bamboo.nvim")
-
--- UX
-Plug("tpope/vim-surround")
-Plug("windwp/nvim-autopairs")
-Plug("numToStr/Comment.nvim")
-Plug("JoosepAlviste/nvim-ts-context-commentstring")
-Plug("lewis6991/gitsigns.nvim")
-Plug("lukas-reineke/indent-blankline.nvim")
-Plug("romainl/vim-cool")
-Plug("folke/trouble.nvim")
-Plug("nvim-telescope/telescope-ui-select.nvim")
-
-vim.call("plug#end")
 
 -- Airline
 vim.g.airline_theme = "minimalist"
