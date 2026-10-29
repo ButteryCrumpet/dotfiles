@@ -88,8 +88,6 @@ if cmp_status_ok then
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = map_char }))
 end
 
-require("nvim-treesitter.configs").setup({ autopairs = { enable = true } })
-
 local ts_conds = require("nvim-autopairs.ts-conds")
 
 -- TODO: can these rules be safely added from "config.lua" ?

@@ -39,7 +39,7 @@ local settings = {
 	foldmethod = "expr",
 	foldcolumn = "1",
 	foldlevelstart = 99,
-	foldexpr = vim.fn["nvim_treesitter#foldexpr"](),
+	foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 }
 
 for k, v in pairs(settings) do

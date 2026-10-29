@@ -2,11 +2,15 @@
 
 [[private]]
 path = ~/.calendars/private
-color = dark green
+color = white
+
+[[private.google]]
+path = ~/.calendars/private/crumpetybumpety@gmail.com/
+color = 111
 
 [[work]]
 path = ~/.calendars/work/simon@issuehunt.io
-color = 153
+color = 2
 readonly = True
 
 [[holidays]]

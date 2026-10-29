@@ -51,14 +51,11 @@ require("mason-lspconfig").setup({
 				init_options = { userLanguages = { templ = "html" } },
 			})
 		end,
-		ts_ls = function()
-			nvim_lsp.ts_ls.setup({
-				single_file_support = false,
-				root_dir = function(fname)
-					local project = nvim_lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json")(fname)
-					local git = nvim_lsp.util.find_git_ancestor(fname)
-					return git or project or nvim_lsp.util.path.dirname(fname)
-				end,
+		tsc = function()
+			nvim_lsp.tsc.setup({
+                    cmd = { "tsc", "--lsp", "--stdio" },
+                    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+                    root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", ".git"),
 			})
 		end,
 		lua_ls = function()

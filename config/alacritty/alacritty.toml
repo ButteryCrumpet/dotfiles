@@ -1,4 +1,5 @@
 [general]
+import = ["~/.config/alacritty/themes/noctalia.toml"]
 live_config_reload = true
 
 [bell]
@@ -67,7 +68,7 @@ save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
-decorations = "full"
+decorations = "None"
 dynamic_padding = false
 opacity = 1.0
 padding = { x = 2, y = 2 }

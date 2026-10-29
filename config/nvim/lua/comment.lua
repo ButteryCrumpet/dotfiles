@@ -15,9 +15,6 @@ local config = {
 		line = "gc",
 		block = "gb",
 	},
-	pre_hook = function(_ctx)
-		return require("ts_context_commentstring.internal").calculate_commentstring()
-	end,
 	post_hook = nil,
 }
 

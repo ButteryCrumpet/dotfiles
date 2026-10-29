@@ -1,5 +1,5 @@
 vim.pack.add({
-	-- Deps
+	--Deps
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/lewis6991/impatient.nvim" },
 
@@ -15,7 +15,7 @@ vim.pack.add({
 	{ src = "https://github.com/williamboman/mason-lspconfig.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/mfussenegger/nvim-lint" },
-	-- { src = "https://github.com/zbirenbaum/copilot.lua" },
+	{ src = "https://github.com/zbirenbaum/copilot.lua" },
 
 	-- AutoCompletion
 	{ src = "https://github.com/hrsh7th/nvim-cmp" },
@@ -51,11 +51,10 @@ vim.pack.add({
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 
 	-- Treesitter
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", ["do"] = ":TSUpdate" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/vrischmann/tree-sitter-templ" },
 	{ src = "https://github.com/romgrk/nvim-treesitter-context" },
 	{ src = "https://github.com/ziontee113/syntax-tree-surfer" },
-	{ src = "https://github.com/nvim-treesitter/playground" },
 
 	-- Airline
 	{ src = "https://github.com/vim-airline/vim-airline" },
@@ -72,13 +71,13 @@ vim.pack.add({
 	-- UX
 	{ src = "https://github.com/tpope/vim-surround" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
-	{ src = "https://github.com/numToStr/Comment.nvim" },
-	{ src = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" },
+    	{ src = "https://github.com/numToStr/Comment.nvim" },
+	-- { src = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	{ src = "https://github.com/romainl/vim-cool" },
 	{ src = "https://github.com/folke/trouble.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" }
 
 })
 
@@ -118,7 +117,7 @@ vim.filetype.add({
 })
 
 require("impatient")
-require("treesitter")
+-- require("treesitter")
 require("telescope-conf")
 require("comp")
 require("lsp")
